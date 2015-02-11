@@ -1,0 +1,27 @@
+#include "int_handler.h"
+
+/*
+ * DESCRIPTION - handle the interrupt
+ * INPUT - int index: index of the interrupt request in the idt table
+ * OUTPUT - NONE
+ */
+void int_handler(int index)
+{
+	switch (index)
+	{
+		case IRQ_KEYBOARD:
+		{
+			keyboard_handler();
+			break;
+		}
+		case IRQ_RTC:
+		{
+			rtc_handler();
+			break;
+		}
+		default:
+		{
+			return;
+		}
+	}
+}
